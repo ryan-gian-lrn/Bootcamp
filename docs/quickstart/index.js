@@ -43,11 +43,46 @@ app.get('/play', function (req, res) {
             rendering_type: 'assess',
             type: 'submit_practice',
             name: 'Items API Quickstart',
-            state: 'initial'
+            state: 'initial',
+            config: {
+                configuration: {
+                    onsubmit_redirect_url: `/reportsapi?user_id=${user_id}&session_id=${session_id}`
+                }
+            }
         }
     );
 
     res.render('standalone-assessment', { request });
+});
+
+
+// Reports API
+app.get('/reportsapi', function (req, res) {
+
+    const { user_id, session_id } = req.query;
+
+    const learnositySdk = new Learnosity();
+
+    const request = learnositySdk.init(
+        'reports',
+        {
+            consumer_key: config.consumerKey,
+            domain: req.hostname
+        },
+        config.consumerSecret,
+        {
+            reports: [
+                {
+                    id: 'session-detail',
+                    type: 'session-detail-by-item',
+                    user_id: user_id,
+                    session_id: session_id
+                }
+            ]
+        }
+    );
+
+    res.render('reports', { request });
 });
 
 app.listen(port, function () {
