@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+        body {
+            background-image: url('/assets/home.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .start-btn {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+        .start-btn img {
+            display: block;
+            max-width: 50vw;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <a class="start-btn" href="/play">
+        <img src="/assets/startbutton.png" alt="Start Game">
+    </a>
+</body>
+</html>
