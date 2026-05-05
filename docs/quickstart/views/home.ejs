@@ -25,11 +25,16 @@
             border: none;
             padding: 0;
             cursor: pointer;
+            animation: float 2s ease-in-out infinite;
         }
         .start-btn img {
             display: block;
-            max-width: 50vw;
+            max-width: 35vw;
             height: auto;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-16px); }
         }
     </style>
 </head>
