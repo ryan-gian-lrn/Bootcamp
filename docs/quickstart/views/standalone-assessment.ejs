@@ -9,6 +9,7 @@
             height: 100%;
             width: 100%;
             margin: 0;
+            overflow: hidden;
         }
         body {
             background-image: url('/assets/playbackground.png');
@@ -16,7 +17,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            min-height: 100vh;
+            height: 100vh;
             font-family: 'Cinzel', 'Georgia', serif;
             color: #f4e4bc;
         }
@@ -24,10 +25,11 @@
 
         /* Player wrapper — center it, give it a parchment/stone card look */
         #learnosity_assess {
-            max-width: 820px;
-            max-height: 60vh;
-            margin: 60px auto 40px auto;
-            padding: 32px;
+            max-width: 640px;
+            max-height: 50vh;
+            overflow-y: auto;
+            margin: 50px auto 32px auto;
+            padding: 22px;
             background: rgba(20, 12, 8, 0.85);
             border: 3px solid #8b6f47;
             border-radius: 12px;
@@ -41,9 +43,9 @@
             top: 12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 820px;
+            width: 640px;
             max-width: calc(100vw - 24px);
-            height: 18px;
+            height: 14px;
             background: #2a1810;
             border: 3px solid #8b6f47;
             border-radius: 12px;
@@ -66,21 +68,21 @@
         .lrn-stimulus,
         .lrn-question .lrn_stimulus_content {
             color: #f4e4bc !important;
-            font-size: 22px !important;
-            line-height: 1.5 !important;
-            margin-bottom: 20px;
+            font-size: 17px !important;
+            line-height: 1.4 !important;
+            margin-bottom: 14px;
         }
 
         /* MCQ options — make them look like big stone buttons */
         .lrn .lrn-mcq-option {
             display: block !important;
-            padding: 16px 22px !important;
-            margin: 12px 0 !important;
+            padding: 10px 16px !important;
+            margin: 8px 0 !important;
             background: linear-gradient(180deg, #3a2817 0%, #2a1810 100%) !important;
             color: #f4e4bc !important;
             border: 2px solid #8b6f47 !important;
             border-radius: 8px !important;
-            font-size: 18px !important;
+            font-size: 14px !important;
             font-family: inherit !important;
             cursor: pointer !important;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
@@ -113,7 +115,7 @@
         .current-item-pos {
             color: #d4a04a !important;
             font-family: 'Cinzel', 'Georgia', serif !important;
-            font-size: 18px !important;
+            font-size: 14px !important;
             font-weight: 600 !important;
             letter-spacing: 1px !important;
             text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
@@ -131,12 +133,12 @@
             background: linear-gradient(180deg, #3a2817 0%, #2a1810 100%) !important;
             color: #f4e4bc !important;
             font-family: 'Cinzel', 'Georgia', serif !important;
-            font-size: 18px !important;
+            font-size: 14px !important;
             font-weight: 600 !important;
             letter-spacing: 1px !important;
             border: 2px solid #8b6f47 !important;
             border-radius: 8px !important;
-            padding: 8px 16px !important;
+            padding: 6px 12px !important;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
             text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
         }
@@ -173,9 +175,9 @@
             color: #2a1810 !important;
             border: 2px solid #5a3a1c !important;
             border-radius: 8px !important;
-            padding: 12px 28px !important;
+            padding: 8px 20px !important;
             font-family: 'Cinzel', 'Georgia', serif !important;
-            font-size: 16px !important;
+            font-size: 13px !important;
             font-weight: 700 !important;
             letter-spacing: 1px !important;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
@@ -341,6 +343,83 @@
                          0 0 16px rgba(212, 160, 74, 0.4);
             display: block !important;
         }
+        .lrn-region.lrn-top-left-region {
+            display: none !important;
+        }
+
+        /* ---------- Battle sprites & HP bars ---------- */
+        .fighter {
+            position: fixed;
+            bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 50;
+            pointer-events: none;
+        }
+        #knight-fighter { left: 40px; }
+        #dragon-fighter { right: 40px; }
+
+        .hp-bar {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 10px;
+            padding: 5px 6px;
+            background: rgba(20, 12, 8, 0.85);
+            border: 2px solid #8b6f47;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+        }
+        .hp-segment {
+            width: 22px;
+            height: 14px;
+            border-radius: 2px;
+            transition: background 250ms ease, box-shadow 250ms ease;
+        }
+        .hp-segment.filled {
+            background: linear-gradient(180deg, #ff5252 0%, #b71c1c 100%);
+            box-shadow: inset 0 0 6px rgba(255, 100, 100, 0.6);
+        }
+        .hp-segment.empty {
+            background: #1a0e08;
+            box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .battle-sprite {
+            height: 380px;
+            width: auto;
+            filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.6));
+            transition: transform 200ms ease;
+        }
+        /* Damage taken — shake + red flash */
+        .battle-sprite.hit {
+            animation: shake 0.5s ease, flash-hit 0.5s ease;
+        }
+        /* Attack lunge — knight slides right, dragon slides left */
+        #knight-sprite.attack { animation: lunge-right 0.5s ease; }
+        #dragon-sprite.attack { animation: lunge-left 0.5s ease; }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-12px); }
+            40% { transform: translateX(12px); }
+            60% { transform: translateX(-8px); }
+            80% { transform: translateX(8px); }
+        }
+        @keyframes flash-hit {
+            0%, 100% { filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.6)); }
+            30% { filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.6))
+                          drop-shadow(0 0 18px rgba(255, 60, 60, 0.95))
+                          brightness(1.4) saturate(1.5); }
+        }
+        @keyframes lunge-right {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(60px); }
+        }
+        @keyframes lunge-left {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-60px); }
+        }
     </style>
 </head>
 <body>
@@ -349,6 +428,15 @@
 <div id="question-timer-bar"><div id="question-timer-fill"></div></div>
 <!-- We create a div element with the id learnosity_assess into which the Items API will load the assessment -->
 <div id="learnosity_assess"></div>
+<!-- Battle sprites with HP bars -->
+<div id="knight-fighter" class="fighter">
+    <div id="knight-hp-bar" class="hp-bar"></div>
+    <img id="knight-sprite" class="battle-sprite" src="/assets/knight.png" alt="Knight">
+</div>
+<div id="dragon-fighter" class="fighter">
+    <div id="dragon-hp-bar" class="hp-bar"></div>
+    <img id="dragon-sprite" class="battle-sprite" src="/assets/dragon.png" alt="Dragon">
+</div>
 <script>
     const request = <%- JSON.stringify(request) %>;
     const PER_QUESTION_SECONDS = 20;
@@ -384,12 +472,160 @@
         barEl.style.display = 'none';
     }
 
+    // ---------- Battle state ----------
+    const MAX_HP = 5;
+    let knightHP = MAX_HP;
+    let dragonHP = MAX_HP;
+    const knightSprite = document.getElementById('knight-sprite');
+    const dragonSprite = document.getElementById('dragon-sprite');
+    const knightHpBar = document.getElementById('knight-hp-bar');
+    const dragonHpBar = document.getElementById('dragon-hp-bar');
+    const scoredRefs = new Set(); // question refs we've already counted damage for
+
+    function renderHpBars() {
+        knightHpBar.innerHTML = '';
+        dragonHpBar.innerHTML = '';
+        for (let i = 0; i < MAX_HP; i++) {
+            const k = document.createElement('div');
+            k.className = 'hp-segment ' + (i < knightHP ? 'filled' : 'empty');
+            knightHpBar.appendChild(k);
+            const d = document.createElement('div');
+            d.className = 'hp-segment ' + (i < dragonHP ? 'filled' : 'empty');
+            dragonHpBar.appendChild(d);
+        }
+    }
+
+    function playAttackAnimation(attacker, defender) {
+        attacker.classList.remove('attack');
+        defender.classList.remove('hit');
+        // Force reflow so the animation can replay
+        void attacker.offsetWidth;
+        void defender.offsetWidth;
+        attacker.classList.add('attack');
+        defender.classList.add('hit');
+        setTimeout(function () {
+            attacker.classList.remove('attack');
+            defender.classList.remove('hit');
+        }, 600);
+    }
+
+    function damageDragon() {
+        if (dragonHP > 0) dragonHP--;
+        playAttackAnimation(knightSprite, dragonSprite);
+        renderHpBars();
+    }
+
+    function damageKnight() {
+        if (knightHP > 0) knightHP--;
+        playAttackAnimation(dragonSprite, knightSprite);
+        renderHpBars();
+    }
+
+    function isQuestionCorrect(q) {
+        // Try Learnosity's built-in score first
+        if (q && typeof q.getScore === 'function') {
+            try {
+                const s = q.getScore();
+                if (s && typeof s.score === 'number' && typeof s.max_score === 'number' && s.max_score > 0) {
+                    return s.score === s.max_score;
+                }
+            } catch (e) {}
+        }
+        // Fallback: compare user's response with the question's valid_response
+        if (q && typeof q.getResponse === 'function' && typeof q.getValidation === 'function') {
+            try {
+                const resp = q.getResponse();
+                const val = q.getValidation();
+                if (resp && val && val.valid_response) {
+                    const userVal = resp.value;
+                    const correctVal = val.valid_response.value;
+                    if (Array.isArray(userVal) && Array.isArray(correctVal)) {
+                        return JSON.stringify(userVal.slice().sort()) === JSON.stringify(correctVal.slice().sort());
+                    }
+                    return JSON.stringify(userVal) === JSON.stringify(correctVal);
+                }
+            } catch (e) {}
+        }
+        return null;
+    }
+
+    function hasResponse(q) {
+        if (!q || typeof q.getResponse !== 'function') return false;
+        const resp = q.getResponse();
+        if (!resp || resp.value === null || resp.value === undefined) return false;
+        if (Array.isArray(resp.value) && resp.value.length === 0) return false;
+        return true;
+    }
+
+    // Score only the questions on a specific item (by their response_ids).
+    // Called when the user navigates away from that item so we know they've
+    // had a chance to answer it.
+    function scoreItem(responseIds) {
+        if (!responseIds || !responseIds.length) return;
+        if (!itemsApp || typeof itemsApp.questions !== 'function') return;
+        const allQs = itemsApp.questions();
+        responseIds.forEach(function (ref) {
+            if (scoredRefs.has(ref)) return;
+            const q = allQs[ref];
+            if (!q) return;
+            if (!hasResponse(q)) {
+                // Skipped — dragon hits the knight
+                scoredRefs.add(ref);
+                damageKnight();
+                return;
+            }
+            const correct = isQuestionCorrect(q);
+            if (correct === null) return;
+            scoredRefs.add(ref);
+            if (correct) damageDragon();
+            else damageKnight();
+        });
+    }
+
+    // Tracks response_ids of the item the user is currently viewing, so when
+    // item:changed fires we can score the item they just left.
+    let previousResponseIds = [];
+    function getCurrentResponseIds() {
+        if (typeof itemsApp.getCurrentItem !== 'function') return [];
+        try {
+            const cur = itemsApp.getCurrentItem();
+            if (cur && Array.isArray(cur.response_ids)) return cur.response_ids;
+        } catch (e) {}
+        return [];
+    }
+
+    renderHpBars();
+
     const itemsApp = LearnosityItems.init(request, {
         readyListener() {
             console.log('ready');
-            itemsApp.on('item:changed', startQuestionTimer);
-            // Stop the timer when the assessment finishes (any of these events can fire)
-            itemsApp.on('test:submit', stopQuestionTimer);
+            // Capture the first item the user lands on
+            previousResponseIds = getCurrentResponseIds();
+            itemsApp.on('item:changed', function () {
+                // Score the item the user just left, then update the pointer
+                scoreItem(previousResponseIds);
+                previousResponseIds = getCurrentResponseIds();
+                startQuestionTimer();
+            });
+            // Score the final item the user is on when they submit
+            itemsApp.on('test:submit', function () {
+                scoreItem(previousResponseIds);
+                // Tally final score directly from each question's getScore()
+                try {
+                    const allQs = itemsApp.questions() || {};
+                    const refs = Object.keys(allQs);
+                    let correct = 0;
+                    refs.forEach(function (ref) {
+                        const s = allQs[ref].getScore && allQs[ref].getScore();
+                        if (s && s.max_score > 0 && s.score === s.max_score) correct++;
+                    });
+                    sessionStorage.setItem('battleResult', JSON.stringify({
+                        correct: correct,
+                        total: refs.length
+                    }));
+                } catch (e) {}
+                stopQuestionTimer();
+            });
             itemsApp.on('test:finished:submit', stopQuestionTimer);
             // Kick off the timer for the first item — item:changed may not fire on initial render
             startQuestionTimer();
