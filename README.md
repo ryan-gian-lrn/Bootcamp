@@ -1,5 +1,9 @@
 <p align="center"><img width="50%" height="50%" src="docs/images/image-logo-graphic.png"></p>
 <h1 align="center">Learnosity SDK - Node.js</h1>
+
+<p align="center"> `cd docs/quickstart` then run `npm start`</p>
+
+
 <p align="center">Everything you need to start building your app in Learnosity, with Node.js and the JavaScript programming language.<br> 
 (Prefer another language? <a href="https://help.learnosity.com/hc/en-us/sections/360000194318-Server-side-development-SDKs">Click here</a>)<br>
 An official Learnosity open-source project.</p>
