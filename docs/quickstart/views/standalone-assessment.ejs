@@ -197,6 +197,150 @@
             font-family: inherit !important;
             background: transparent !important;
         }
+
+        /* ---------- Submit confirmation modal ---------- */
+        .lrn-modal-backdrop,
+        .modal-backdrop,
+        .lrn .modal-backdrop {
+            background: rgba(0, 0, 0, 0.75) !important;
+        }
+        .lrn-modal,
+        .lrn .modal,
+        .lrn-modal-dialog,
+        .modal-dialog,
+        .lrn .modal-content,
+        .modal-content,
+        .lrn-modal-content {
+            background: rgba(20, 12, 8, 0.95) !important;
+            border: 3px solid #8b6f47 !important;
+            border-radius: 12px !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7),
+                        inset 0 0 24px rgba(0, 0, 0, 0.5) !important;
+            color: #f4e4bc !important;
+            font-family: 'Cinzel', 'Georgia', serif !important;
+        }
+        .lrn .modal-header,
+        .lrn-modal-header,
+        .modal-header {
+            border-bottom: 2px solid #5a3a1c !important;
+            background: transparent !important;
+            color: #d4a04a !important;
+        }
+        .lrn .modal-title,
+        .lrn-modal-title,
+        .modal-title {
+            color: #d4a04a !important;
+            font-family: 'Cinzel', 'Georgia', serif !important;
+            font-size: 22px !important;
+            font-weight: 700 !important;
+            letter-spacing: 2px !important;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
+        }
+        .lrn .modal-body,
+        .lrn-modal-body,
+        .modal-body {
+            color: #f4e4bc !important;
+            font-family: 'Cinzel', 'Georgia', serif !important;
+            font-size: 16px !important;
+            line-height: 1.5 !important;
+            background: transparent !important;
+        }
+        .lrn .modal-footer,
+        .lrn-modal-footer,
+        .modal-footer {
+            border-top: 2px solid #5a3a1c !important;
+            background: transparent !important;
+        }
+        /* Modal close (×) icon */
+        .lrn .modal-header .close,
+        .modal-header button.close {
+            color: #d4a04a !important;
+            opacity: 1 !important;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
+        }
+        /* Modal action buttons (Yes / No / Cancel / OK) */
+        .lrn .modal-footer .btn,
+        .modal-footer .btn,
+        .lrn-modal-footer button,
+        .modal-footer button {
+            background: linear-gradient(180deg, #d4a04a 0%, #8b6f47 100%) !important;
+            color: #2a1810 !important;
+            border: 2px solid #5a3a1c !important;
+            border-radius: 8px !important;
+            padding: 10px 24px !important;
+            font-family: 'Cinzel', 'Georgia', serif !important;
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            letter-spacing: 1px !important;
+            margin: 0 6px !important;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5) !important;
+            transition: transform 120ms ease, background 120ms ease !important;
+        }
+        .lrn .modal-footer .btn:hover,
+        .modal-footer .btn:hover,
+        .lrn-modal-footer button:hover,
+        .modal-footer button:hover {
+            background: linear-gradient(180deg, #ffd54f 0%, #d4a04a 100%) !important;
+            transform: translateY(-2px);
+        }
+        /* "No / Cancel" style as secondary stone button */
+        .lrn .modal-footer .btn-default,
+        .modal-footer .btn-default,
+        .lrn .modal-footer .btn-secondary,
+        .modal-footer .btn-secondary {
+            background: linear-gradient(180deg, #3a2817 0%, #2a1810 100%) !important;
+            color: #f4e4bc !important;
+            border: 2px solid #8b6f47 !important;
+        }
+        .lrn .modal-footer .btn-default:hover,
+        .modal-footer .btn-default:hover,
+        .lrn .modal-footer .btn-secondary:hover,
+        .modal-footer .btn-secondary:hover {
+            background: linear-gradient(180deg, #5a3a1c 0%, #3a2010 100%) !important;
+            border-color: #d4a04a !important;
+        }
+
+        /* ---------- Post-submit "Test complete / saving" screen ---------- */
+        .lrn-test-saving-screen,
+        .lrn-test-saved-screen,
+        .lrn-assess-saving-screen,
+        .lrn-test-finished,
+        .lrn-test-submitting,
+        .test-saving-screen,
+        .test-saved-screen,
+        .lrn [class*="saving-screen"],
+        .lrn [class*="saved-screen"],
+        .lrn [class*="test-finished"] {
+            background: rgba(20, 12, 8, 0.95) !important;
+            color: #f4e4bc !important;
+            font-family: 'Cinzel', 'Georgia', serif !important;
+        }
+        .lrn-test-saving-screen *,
+        .lrn-test-saved-screen *,
+        .lrn-assess-saving-screen *,
+        .lrn-test-finished *,
+        .lrn-test-submitting *,
+        .lrn [class*="saving-screen"] *,
+        .lrn [class*="saved-screen"] *,
+        .lrn [class*="test-finished"] * {
+            color: #f4e4bc !important;
+            font-family: 'Cinzel', 'Georgia', serif !important;
+        }
+        /* Title on the "Test submitted" screen */
+        .lrn-test-saving-screen h1, .lrn-test-saving-screen h2,
+        .lrn-test-saved-screen h1, .lrn-test-saved-screen h2,
+        .lrn-test-finished h1, .lrn-test-finished h2,
+        .lrn [class*="saving-screen"] h1,
+        .lrn [class*="saving-screen"] h2,
+        .lrn [class*="test-finished"] h1,
+        .lrn [class*="test-finished"] h2 {
+            color: #d4a04a !important;
+            font-size: 32px !important;
+            letter-spacing: 2px !important;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7),
+                         0 0 16px rgba(212, 160, 74, 0.4);
+            display: block !important;
+        }
     </style>
 </head>
 <body>
@@ -207,7 +351,7 @@
 <div id="learnosity_assess"></div>
 <script>
     const request = <%- JSON.stringify(request) %>;
-    const PER_QUESTION_SECONDS = 15;
+    const PER_QUESTION_SECONDS = 20;
     const barEl = document.getElementById('question-timer-bar');
     const fillEl = document.getElementById('question-timer-fill');
     let warnTimeoutId = null;

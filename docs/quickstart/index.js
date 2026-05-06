@@ -39,7 +39,7 @@ app.get('/play', function (req, res) {
             user_id: user_id,
             activity_template_id: 'football_questions',
             session_id: session_id,
-            activity_id: 'quickstart_examples_activity_001',
+            activity_id: 'football_questions_001',
             rendering_type: 'assess',
             type: 'submit_practice',
             name: 'Items API Quickstart',
